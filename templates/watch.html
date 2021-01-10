@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Watch
+{% endblock %}
+
+{% block main %}
+    <form action="/watch" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Stock Symbol" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Watch</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        {% for row in rows %}
+            <tr>
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["price"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
